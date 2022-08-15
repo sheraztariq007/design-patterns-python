@@ -1,32 +1,22 @@
-from typing import List
+from abstracts.abstract_office import AbstractOffice
 
-from abstracts.AbstractDepartment import AbstractDepartment
-from abstracts.AbstractOffice import AbstractOffice
-from abstracts.AbstractProduct import AbstractProduct
-from post_office.departments.packaging import PackagingDepartment
-from post_office.departments.shipping import ShippingDepartment
-from post_office.products.envelopes import Envelopes
-from post_office.products.post_stamps import PostStamps
+from abstracts.abstract_employee import AbstractEmployee
+from post_office.employees.accountant import Accountant
+from post_office.employees.ceo import CEO
 
 
 class PostOffice(AbstractOffice):
-    def create_departments(self) -> List[AbstractDepartment]:
-        department_list = []
 
-        shipping = ShippingDepartment()
-        packaging = PackagingDepartment()
-        department_list.append(shipping)
-        department_list.append(packaging)
+    def create_ceo(self) -> AbstractEmployee:
+        hobbies = ["playing chess"]
+        responsibilities = ["some stuff that a ceo do"]
+        ceo = CEO("Joe Doe", "Oklahoma", hobbies=hobbies, responsibilities=responsibilities)
 
-        return department_list
+        return ceo
 
-    def create_product(self) -> List[AbstractProduct]:
-        product_list = []
+    def create_accountant(self) -> AbstractEmployee:
+        hobbies = ["playing chess"]
+        responsibilities = ["some stuff that a account do"]
+        accountant = Accountant("Mark Doe", "Oklahoma", hobbies=hobbies, responsibilities=responsibilities)
 
-        envelopes = Envelopes()
-        post_stamps = PostStamps()
-
-        product_list.append(envelopes)
-        product_list.append(post_stamps)
-
-        return product_list
+        return accountant
